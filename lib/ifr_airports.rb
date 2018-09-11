@@ -1,5 +1,3 @@
-require "ifr_airports/version"
-
-module IfrAirports
-  # Your code goes here...
-end
+# Following Avi's demo and this file is being used as an "environment file"
+require_relative "./ifr_airports/version"
+require_relative './ifr_airports/cli'

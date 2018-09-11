@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require './lib/ifr_airports'
+
+IfrAirports::CLI.new.call
