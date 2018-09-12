@@ -8,24 +8,27 @@ class IfrAirports::CLI
   
   def list_ifr_airports(state)
     puts "#{state} Airports that support for poor weather landing with electronic guidance "
-    puts <<~HEREDOC
-      1. Colorado Springs Airport (KCOS)
-      2. Meadow Lake Airport (KFLY)
-    HEREDOC
+    
+    @airports = IfrAirports::Airport.all_in_state(state)
+    @airports.each { |e| puts "#{e.name} - #{e.id}" }
+    
   end
   
   
   def list_airport_weather(id)
+    
+    airport = IfrAirports::Airport.find_by_id(id)
+    
     puts "Current weather for #{id}:"
-    puts "Temp: 72F"
-    puts "Overcast: 3000"
+    puts "Temp: #{airport.temp}"
+    puts "Clouds: #{airport.clouds}"
   end
   
   def menu
     s_input = nil 
     while s_input != "exit" 
       puts "Please provide a State name to search (or 'exit')"
-      s_input = gets.strip.downcase
+      s_input = gets.strip
       if s_input != "exit" &&  state_valid?(s_input)
         
         list_ifr_airports(s_input)
@@ -33,7 +36,7 @@ class IfrAirports::CLI
         id_input = nil
         while !id_valid?(id_input)
           puts "Please select a state airport identifier for detailed current weather"
-          id_input = gets.strip.downcase
+          id_input = gets.strip
         end
         list_airport_weather(id_input)
       end
@@ -45,11 +48,11 @@ class IfrAirports::CLI
   end
   
   def id_valid?(id)
-    id == "kcos" || id == "kfly"
+    id == "KCOS" || id == "KFLY"
   end
     
   def state_valid?(state)
-    state == "colorado"
+    state == "Colorado"
   end
   
 end

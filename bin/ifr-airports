@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
-require './lib/ifr_airports'
+#require './lib/ifr_airports'
+require "bundler/setup"
+require "ifr_airports"
 
 IfrAirports::CLI.new.call

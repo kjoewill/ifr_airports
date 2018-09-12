@@ -9,9 +9,11 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Kevin W.'"]
   spec.email         = ["'kjoewill@gmail.com'"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  #spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
+  #spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = "A CLI gem to list IFR capable airports"
+  spec.description   = "This CLI gem lists all IFR capable airports within a selected State and can also provide current weather at any selected IFR capable airport"
+  spec.homepage      = "https://github.com/kjoewill/ifr_airports"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
