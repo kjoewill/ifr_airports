@@ -3,3 +3,9 @@ require_relative "./ifr_airports/version"
 require_relative './ifr_airports/cli'
 require_relative './ifr_airports/airport'
 require_relative './ifr_airports/airport_scraper'
+
+#Avi's demo (https://www.youtube.com/watch?v=_lDExWIhYKI) at minute ~50 is debating whether
+# this is best to require these dependencies here.  He will revisit later
+require 'open-uri'
+require 'nokogiri'
+require 'pry'

@@ -4,6 +4,7 @@ class IfrAirports::Airport
 
   def self.all_in_state(state)
     #tap?
+    #need to filer returned Airports for non-ifr
     @@all = IfrAirports::AirportScraper.all
     @@all
   end

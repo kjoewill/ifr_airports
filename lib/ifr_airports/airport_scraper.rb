@@ -2,6 +2,9 @@ class IfrAirports::AirportScraper
   
   def self.all 
     
+    airports = []
+    airports
+    
     airport_1 = IfrAirports::Airport.new 
     airport_1.name = "Colorado Springs Airport"
     airport_1.id = "KCOS"
@@ -20,4 +23,17 @@ class IfrAirports::AirportScraper
     
   end
   
+  def self.scrape_airnav(state)
+    state_url = self.state_url(state)
+    doc = Nokogiri::HTML(open(state_url))
+    binding.pry
+  end
+  
+  def self.state_url(state)
+    #example - https://www.globalair.com/airport/Airports_in_Colorado.aspx
+    base_url = "https://www.globalair.com/airport/"
+    state_url = "#{base_url}Airports_in_#{state}.aspx"
+    binding.pry
+    state_url
+  end
 end
