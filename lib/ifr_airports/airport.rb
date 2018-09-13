@@ -1,6 +1,6 @@
 class IfrAirports::Airport
   
-  attr_accessor :name, :id, :temp, :clouds, :supports_ifr
+  attr_accessor :name, :id, :temp, :flight_rules, :visibility, :wind_direction, :wind_speed
   
   def initialize(name, id)
     @name = name
@@ -12,6 +12,10 @@ class IfrAirports::Airport
     #need to filer returned Airports for non-ifr
     @@all = IfrAirports::AirportScraper.scrape_airnav(state)
     @@all
+  end
+  
+  def augment_with_weather
+    IfrAirports::WeatherAPI.weather_for(self)
   end
   
   def self.find_by_id(id)

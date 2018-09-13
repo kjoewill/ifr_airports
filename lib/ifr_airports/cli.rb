@@ -18,10 +18,15 @@ class IfrAirports::CLI
   def list_airport_weather(id)
     
     airport = IfrAirports::Airport.find_by_id(id)
+    airport.augment_with_weather
     
+    #maybe move this into a build dosplay string on Airport
     puts "Current weather for #{id}:"
     puts "Temp: #{airport.temp}"
-    puts "Clouds: #{airport.clouds}"
+    puts "Visiblity: #{airport.visibility}"
+    puts "Wind Direction:  #{airport.wind_direction}"
+    puts "Wind Speed:  #{airport.wind_speed}"
+
   end
   
   def menu
