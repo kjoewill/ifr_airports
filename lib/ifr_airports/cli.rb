@@ -52,7 +52,7 @@ class IfrAirports::CLI
   end
     
   def state_valid?(state)
-    state == "Colorado" || state == "Indiana"
+    IfrAirports::Airport.state_valid?(state)
   end
   
 end
