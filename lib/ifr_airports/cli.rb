@@ -48,11 +48,11 @@ class IfrAirports::CLI
   end
   
   def id_valid?(id)
-    id == "KCOS" || id == "KFLY"
+    IfrAirports::Airport.id_exits(id)
   end
     
   def state_valid?(state)
-    state == "Colorado"
+    state == "Colorado" || state == "Indiana"
   end
   
 end
