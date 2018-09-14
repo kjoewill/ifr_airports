@@ -6,27 +6,28 @@ class IfrAirports::CLI
     goodbye
   end
   
+  private
+  
   def list_ifr_airports(state)
+    puts "========================================================"
+    puts
     puts "#{state} Airports that support for poor weather landing with electronic guidance "
-    
+    puts
     @airports = IfrAirports::Airport.all_in_state(state)
     @airports.each { |e| puts "#{e.name} - #{e.id}" }
-    
+    puts "========================================================="
   end
-  
   
   def list_airport_weather(id)
     
     airport = IfrAirports::Airport.find_by_id(id)
     airport.augment_with_weather
     
-    #maybe move this into a build dosplay string on Airport
     puts "Current weather for #{id}:"
-    puts "Temp: #{airport.temp}"
-    puts "Visiblity: #{airport.visibility}"
-    puts "Wind Direction:  #{airport.wind_direction}"
-    puts "Wind Speed:  #{airport.wind_speed}"
-
+    puts "Temp: #{airport.temp}C"
+    puts "Visiblity: #{airport.visibility} miles"
+    puts "Wind Direction:  #{airport.wind_direction} degrees"
+    puts "Wind Speed:  #{airport.wind_speed} kts"
   end
   
   def menu
@@ -40,7 +41,7 @@ class IfrAirports::CLI
         
         id_input = nil
         while !id_valid?(id_input)
-          puts "Please select a state airport identifier for detailed current weather"
+          puts "Please select an airport identifier for detailed current weather"
           id_input = gets.strip
         end
         list_airport_weather(id_input)

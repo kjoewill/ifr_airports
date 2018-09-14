@@ -9,7 +9,6 @@ class IfrAirports::Airport
 
   def self.all_in_state(state)
     #tap?
-    #need to filer returned Airports for non-ifr
     @@all = IfrAirports::AirportScraper.scrape_airnav(state)
     @@all
   end
@@ -27,7 +26,7 @@ class IfrAirports::Airport
   end
   
   def self.state_valid?(state)
-    ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii",
+    ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii",     
     "Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan",
     "Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York",
     "North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina",
