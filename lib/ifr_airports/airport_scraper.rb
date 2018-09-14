@@ -27,5 +27,4 @@ class IfrAirports::AirportScraper
     row.css("td")[2].text != "None"
   end
   
-  
 end

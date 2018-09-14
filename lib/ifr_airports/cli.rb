@@ -28,20 +28,21 @@ class IfrAirports::CLI
     puts "Visiblity: #{airport.visibility} miles"
     puts "Wind Direction:  #{airport.wind_direction} degrees"
     puts "Wind Speed:  #{airport.wind_speed} kts"
+    puts
   end
   
   def menu
     s_input = nil 
     while s_input != "exit" 
       puts "Please provide a State name to search (or 'exit')"
+      print ">"
       s_input = gets.strip
       if s_input != "exit" &&  state_valid?(s_input)
-        
         list_ifr_airports(s_input)
-        
         id_input = nil
         while !id_valid?(id_input)
-          puts "Please select an airport identifier for detailed current weather"
+          puts "Please select an airport identifier (from the above list) for detailed current weather"
+          print ">"
           id_input = gets.strip
         end
         list_airport_weather(id_input)
@@ -50,7 +51,7 @@ class IfrAirports::CLI
   end
   
   def goodbye
-    puts "Adios!"
+    puts "Goodbye!"
   end
   
   def id_valid?(id)
