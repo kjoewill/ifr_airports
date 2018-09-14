@@ -20,11 +20,15 @@ class IfrAirports::AirportScraper
   #private
   
   def self.state_url(state)
-    "https://www.globalair.com/airport/Airports_in_#{state}.aspx"
+    "https://www.globalair.com/airport/Airports_in_#{modify_if_compound(state)}.aspx"
   end
   
   def self.supports_instrument_landings?(row)
     row.css("td")[2].text != "None"
+  end
+  
+  def self.modify_if_compound(state) #"New York" => "New_York" 
+    state.split.join("_")
   end
   
 end
