@@ -1,4 +1,12 @@
-STATE_ABBR_TO_NAME = {
+class IfrAirports::Utilities
+
+  def self.state_name_valid?(name)
+    STATE_ABBR_TO_NAME.value?(name.downcase)
+  end
+
+
+  # Borrowed from https://gist.github.com/hmcfletch/1005552
+  STATE_ABBR_TO_NAME = {
     'AL' => 'alabama',
     'AK' => 'alaska',
     'AZ' => 'arizona',
@@ -53,3 +61,6 @@ STATE_ABBR_TO_NAME = {
     'WI' => 'wisconsin',
     'WY' => 'wyoming'
   }
+  
+end
+  

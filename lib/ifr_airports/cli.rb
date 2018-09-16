@@ -59,7 +59,7 @@ class IfrAirports::CLI
   end
     
   def state_valid?(state)
-    IfrAirports::Airport.state_valid?(state)
+    IfrAirports::Utilities.state_name_valid?(state)
   end
   
 end
