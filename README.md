@@ -3,7 +3,7 @@
 This application can be used to locate airports within any US state that support poor weather operations
 by means of electronic navigation guidance.  Current weather information is also provided for these airports.
 
-The appllication makes use of a web page: [Global Air](https://www.globalair.com) to find IFR-capable airports and a web service: [AVWX](https://avwx.rest/api) to retreive current weather information.
+The appllication makes use of a web page: [Global Air](https://www.globalair.com) to find IFR-capable airports and a web service: [AVWX](https://avwx.rest) to retreive current weather information.
 
 ## Installation
 
