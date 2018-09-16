@@ -22,7 +22,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+This application can be used to find airports within any US state that support poor weather operations via 
+electronic navigation guidance.
+
+After cloning this repo set your directory to "ifr_airports" and from the command line run "./bin/ifr-airports".  At this point you will be prompted for a US state name. Type in your chosed state 
+at the prompt and hit "enter".  You will then be presented with a list of poor weather-capable airports in
+the state. Choose an airport and type it's identifier at the prompt and hit "enter" to recive that airport's
+most recent weather report.
 
 ## Development
 
