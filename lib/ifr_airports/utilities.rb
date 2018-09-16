@@ -8,7 +8,6 @@ class IfrAirports::Utilities
     STATE_ABBR_TO_NAME[abbrv.upcase]
   end
 
-
   # Borrowed from https://gist.github.com/hmcfletch/1005552
   STATE_ABBR_TO_NAME = {
     'AL' => 'alabama',
