@@ -1,9 +1,15 @@
 RSpec.describe IfrAirports do
-  it "has a version number" do
-    expect(IfrAirports::VERSION).not_to be nil
+ 
+  it 'instantiates an instance of TicTacToe' do
+    cli = IfrAirports::CLI.new
+    
+    allow($stdout).to receive(:puts)
+   
+    allow(cli).to receive(:gets).and_return("CO")
+
+
+    run_file("./bin/ifr-airports")
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
-  end
+
 end
