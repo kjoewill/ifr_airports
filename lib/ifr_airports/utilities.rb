@@ -3,6 +3,10 @@ class IfrAirports::Utilities
   def self.state_name_valid?(name)
     STATE_ABBR_TO_NAME.value?(name.downcase)
   end
+  
+  def self.name_for_abreviation(abbrv)
+    STATE_ABBR_TO_NAME[abbrv.upcase]
+  end
 
 
   # Borrowed from https://gist.github.com/hmcfletch/1005552

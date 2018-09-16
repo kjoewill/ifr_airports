@@ -11,7 +11,7 @@ class IfrAirports::CLI
   def list_ifr_airports(state)
     puts "========================================================"
     puts
-    puts "#{state} Airports that support for poor weather landing with electronic guidance "
+    puts "#{state.capitalize} Airports that support poor weather operations with electronic guidance "
     puts
     @airports = IfrAirports::Airport.all_in_state(state)
     @airports.each { |e| puts "#{e.name} - #{e.id}" }
@@ -37,14 +37,14 @@ class IfrAirports::CLI
       puts "Please provide a State name to search (or 'exit')"
       print ">"
       s_input = gets.strip
-      convert_abreviation(s_input) if s_input.size == 2
+      s_input = convert_abreviation(s_input) if s_input.size == 2
       if s_input != "exit" &&  state_valid?(s_input)
         list_ifr_airports(s_input)
         id_input = nil
         while !id_valid?(id_input)
           puts "Please select an airport identifier (from the above list) for detailed current weather"
           print ">"
-          id_input = gets.strip
+          id_input = gets.strip.upcase
         end
         list_airport_weather(id_input)
       end
@@ -63,7 +63,7 @@ class IfrAirports::CLI
     IfrAirports::Utilities.state_name_valid?(state)
   end
   
-  def convert_abreviation(abbrv) #yes this is ironic
+  def convert_abreviation(abbrv) # the irony!
     IfrAirports::Utilities.name_for_abreviation(abbrv)
   end
   
