@@ -23,7 +23,10 @@ class IfrAirports::CLI
     airport = IfrAirports::Airport.find_by_id(id)
     airport.augment_with_weather
     
+    delta = ((DateTime.now - airport.timestamp)*24*60).to_int
+    
     puts "Current weather for #{id}:"
+    puts "Measurement taken #{delta} minutes ago"
     puts "Temp: #{airport.temp}C"
     puts "Visiblity: #{airport.visibility} miles"
     puts "Wind Direction:  #{airport.wind_direction} degrees"

@@ -1,6 +1,6 @@
 class IfrAirports::Airport
   
-  attr_accessor :name, :id, :temp, :flight_rules, :visibility, :wind_direction, :wind_speed
+  attr_accessor :name, :id, :temp, :flight_rules, :visibility, :wind_direction, :wind_speed, :timestamp
   
   def initialize(name, id)
     @name = name
