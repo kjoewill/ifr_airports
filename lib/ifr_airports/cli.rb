@@ -37,6 +37,7 @@ class IfrAirports::CLI
       puts "Please provide a State name to search (or 'exit')"
       print ">"
       s_input = gets.strip
+      convert_abreviation(s_input) if s_input.size == 2
       if s_input != "exit" &&  state_valid?(s_input)
         list_ifr_airports(s_input)
         id_input = nil
@@ -60,6 +61,10 @@ class IfrAirports::CLI
     
   def state_valid?(state)
     IfrAirports::Utilities.state_name_valid?(state)
+  end
+  
+  def convert_abreviation(abbrv) #yes this is ironic
+    IfrAirports::Utilities.name_for_abreviation(abbrv)
   end
   
 end
