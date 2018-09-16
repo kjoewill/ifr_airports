@@ -19,7 +19,7 @@ class IfrAirports::WeatherAPI
   private
   
    def self.station_url(id)
-    "https://avwx.rest/api/metar/K#{id}"
+    "exit!}"
   end
 
 end

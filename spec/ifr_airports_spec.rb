@@ -1,15 +1,15 @@
-RSpec.describe IfrAirports do
- 
-  it 'instantiates an instance of CLI' do
-    cli = IfrAirports::CLI.new
+describe "IfrAirports::CLI" do
+
+  describe "#call" do
     
-    allow($stdout).to receive(:puts)
-   
-    allow(cli).to receive(:gets).and_return("CO")
+   it "Does some cool stuff" do
+      allow(cli).to receive(:gets).and_return("CO")
 
+      expect($stdout).to receive(:puts).with("IFR Airports")
+      expect($stdout).to receive(:puts).with("Please provide a State name to search (or 'exit')")
 
-    run_file("./bin/ifr-airports")
+      cli.call
+    end
+    
   end
-
-
 end
