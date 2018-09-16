@@ -8,9 +8,7 @@ class IfrAirports::Airport
   end
 
   def self.all_in_state(state)
-    #tap?
     @@all = IfrAirports::AirportScraper.scrape_globalair(state)
-    @@all
   end
   
   def augment_with_weather
