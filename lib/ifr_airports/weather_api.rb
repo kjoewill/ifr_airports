@@ -13,7 +13,7 @@ class IfrAirports::WeatherAPI
     airport.visibility = response["Visibility"]
     airport.wind_direction = response["Wind-Direction"]
     airport.wind_speed = response["Wind-Speed"]
-    airport.timestamp = DateTime.parse(response["Meta"]["Timestamp"])
+    airport.timestamp = IfrAirports::Utilities.parse_metar_time(response["Time"])
   end
   
   private

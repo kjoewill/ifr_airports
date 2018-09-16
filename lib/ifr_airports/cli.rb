@@ -21,17 +21,21 @@ class IfrAirports::CLI
   def list_airport_weather(id)
     
     airport = IfrAirports::Airport.find_by_id(id)
-    airport.augment_with_weather
+    if airport.augment_with_weather
     
-    delta = ((DateTime.now - airport.timestamp)*24*60).to_int
+      delta_minutes = ((Time.now - airport.timestamp) / 60).floor
     
-    puts "Current weather for #{id}:"
-    puts "Measurement taken #{delta} minutes ago"
-    puts "Temp: #{airport.temp}C"
-    puts "Visiblity: #{airport.visibility} miles"
-    puts "Wind Direction:  #{airport.wind_direction} degrees"
-    puts "Wind Speed:  #{airport.wind_speed} kts"
-    puts
+      puts "Current weather for #{id}: ( #{delta_minutes} minutes ago )"
+      puts "Temp: #{airport.temp}C"
+      puts "Visiblity: #{airport.visibility} miles"
+      puts "Wind Direction:  #{airport.wind_direction} degrees"
+      puts "Wind Speed:  #{airport.wind_speed} kts"
+      puts
+      
+    else
+      puts "Sorry, No weather observation available for #{id}"
+      puts
+    end
   end
   
   def menu

@@ -8,6 +8,15 @@ class IfrAirports::Utilities
     STATE_ABBR_TO_NAME[abbrv.upcase]
   end
 
+  def self.parse_metar_time(time_string)
+    if time_string != nil  
+      Time.gm(Time.now.year, Time.now.month, time_string[0..1], time_string[2..3], time_string[4..5])
+    else
+      nil
+    end
+  end
+
+
   # Borrowed from https://gist.github.com/hmcfletch/1005552
   STATE_ABBR_TO_NAME = {
     'AL' => 'alabama',
