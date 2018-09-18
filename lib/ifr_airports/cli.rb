@@ -45,7 +45,7 @@ class IfrAirports::CLI
         list_ifr_airports(s_input)
         id_input = nil
         while !id_valid?(id_input)
-          puts "Please select an airport identifier (from the above list) for detailed current weather"
+          puts "Please select an airport identifier (from the above list) for current weather"
           print ">"
           id_input = gets.strip.upcase
         end
