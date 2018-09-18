@@ -16,11 +16,11 @@ class IfrAirports::Airport
   end
   
   def self.find_by_id(id)
-    @@all.find { |airport| airport.id == id }
+    @@all.find { |airport| airport.id == id.upcase }
   end
   
   def self.id_exits(id)
-    @@all.any?{ |e| e.id == id }
+    @@all.any?{ |e| e.id == id.upcase }
   end
 
 end

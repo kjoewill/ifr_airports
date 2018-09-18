@@ -44,12 +44,14 @@ class IfrAirports::CLI
       if s_input != "exit" &&  state_valid?(s_input)
         list_ifr_airports(s_input)
         id_input = nil
-        while !id_valid?(id_input)
-          puts "Please select an airport identifier (from the above list) for current weather"
+        while id_input != "exit"
+          puts "Choose an airport ID, from the above list, for current weather (or 'exit')"
           print ">"
-          id_input = gets.strip.upcase
+          id_input = gets.strip
+          if id_input != "exit" && id_valid?(id_input)
+            list_airport_weather(id_input)
+          end
         end
-        list_airport_weather(id_input)
       end
     end
   end
