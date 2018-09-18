@@ -9,12 +9,8 @@ class IfrAirports::AirportScraper
     rows = table.css("tr")
     rows.shift # remove the table header
     
-    rows.each do |row|
-      if supports_instrument_landings?(row)
-        airports << IfrAirports::Airport.new(row.css("td")[1].text, row.css("td")[0].text)
-      end
-    end
-    airports
+    rows.reject { |r| !supports_instrument_landings?(r) }
+    .collect {|r| IfrAirports::Airport.new(r.css("td")[1].text, r.css("td")[0].text) }
   end
   
   #private
