@@ -1,7 +1,7 @@
 class IfrAirports::AirportScraper
   
   def self.scrape_globalair(state)
-    airports = []
+    #airports = []
     state_url = self.state_url(state)
     doc = Nokogiri::HTML(open(state_url))
     
