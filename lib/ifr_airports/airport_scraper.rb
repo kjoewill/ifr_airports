@@ -1,7 +1,6 @@
 class IfrAirports::AirportScraper
   
   def self.scrape_globalair(state)
-    #airports = []
     state_url = self.state_url(state)
     doc = Nokogiri::HTML(open(state_url))
     
@@ -9,8 +8,7 @@ class IfrAirports::AirportScraper
     rows = table.css("tr")
     rows.shift # remove the table header
     
-    rows.reject { |r| !supports_instrument_landings?(r) }
-    .collect {|r| IfrAirports::Airport.new(r.css("td")[1].text, r.css("td")[0].text) }
+    rows.reject { |r| !supports_instrument_landings?(r) }.collect {|r| create_airport(r) }
   end
   
   #private
@@ -25,6 +23,10 @@ class IfrAirports::AirportScraper
   
   def self.modify_if_compound(state) #"New York" => "New_York" 
     state.split.join("_")
+  end
+  
+  def self.create_airport(row)
+    IfrAirports::Airport.new(row.css("td")[1].text, row.css("td")[0].text)
   end
   
 end
