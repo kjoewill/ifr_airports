@@ -1,7 +1,7 @@
 class IfrAirports::CLI 
 
   def call 
-    puts "IFR Airports"
+    puts "Welcome to IFR Airports!"
     menu
     goodbye
   end
