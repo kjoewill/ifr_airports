@@ -2,6 +2,6 @@
 
 #require './lib/ifr_airports'
 require "bundler/setup"
-require "ifr_airports"
+require_relative "../lib/ifr_airports"
 
 IfrAirports::CLI.new.call

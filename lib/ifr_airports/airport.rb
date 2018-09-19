@@ -1,14 +1,25 @@
 class IfrAirports::Airport
   
-  attr_accessor :name, :id, :temp, :flight_rules, :visibility, :wind_direction, :wind_speed, :timestamp
+  attr_accessor :name, :id, :temp, :flight_rules, :visibility, :wind_direction, :wind_speed, :timestamp, :state
   
-  def initialize(name, id)
+  @@all = []
+  
+  def initialize(name, id, state)
     @name = name
     @id = id
+    @state = state
+    @@all << self
   end
-
+  
+  def self.all
+    @@all
+  end
+  
   def self.all_in_state(state)
-    @@all = IfrAirports::AirportScraper.scrape_globalair(state)
+    if !self.all.find { |s| s.state == state }
+      IfrAirports::AirportScraper.scrape_globalair(state)
+    end
+    self.all.select { |a| a.state == state }
   end
   
   def augment_with_weather
